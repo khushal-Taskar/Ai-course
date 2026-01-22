@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
+import { Provider } from "@radix-ui/react-tooltip";
 
 export const metadata: Metadata = {
   title: "Ai Video Course",
@@ -15,12 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body
         className={AppFont.className}
-      >
+      >  <Provider>
         {children}
+        </Provider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
